@@ -1,8 +1,9 @@
 body {
-    background: rgb(253, 253, 253);
+    background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDKm6YwKcDW3x8hILmQIZQbthW9pwb7Yn3Hg&s");
     color: rgb(45, 45, 45);
     padding: 10px;
     font-family: cursive;
+    background-size: 100%;
 }
 #all-contents {
   max-width: 800px;
@@ -40,8 +41,9 @@ a {
 
 /* main container area beneath menu */
 main {
-    background: rgba(6, 239, 235, 0.578);
+    background: rgba(2, 128, 239, 0.945);
     display: flex;
+    border: 10px solid black;
 }
 .sidebar {
     margin-right: 25px;
