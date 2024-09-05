@@ -1,4 +1,10 @@
 $(function () {
+  createPlatform(200,620,100,10);
+  createPlatform(400,620, 110, 10);
+  createPlatform(0,575, 100, 10);
+  createPlatform(100,475, 100,10 );
+  createPlatform(240, 300, 100, 10);
+
   // initialize canvas and context when able to
   canvas = document.getElementById("canvas");
   ctx = canvas.getContext("2d");
