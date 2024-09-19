@@ -4,6 +4,9 @@ body {
 
 canvas {
   background-color: lightblue;
+  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRh5uunAwcuZRCpOuN3keDbMRCFMh8lvZUrkQ&s");
+  background-repeat: no-repeat;
+  background-size: 100%;
   margin: 20px;
 }
 
