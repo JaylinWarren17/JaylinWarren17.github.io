@@ -9,7 +9,7 @@
 		.box {
 			width: 70px;
 			height: 70px;
-			background-color: teal;
+			background-color: red;
 			font-size: 300%;
 			text-align: center;
 			user-select: none;
@@ -22,6 +22,9 @@
 
 		.board {
 			height: 100vh;
+			background-image: url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/fdcfb3b0-ce5d-4d84-b195-7bbdf1674486/de9czlr-7a9ef699-b304-48cd-901f-2484ff22cd91.jpg/v1/fill/w_1280,h_720,q_75,strp/jujutsu_kaisen_wallpaper_2_by_vale0912_de9czlr-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvZmRjZmIzYjAtY2U1ZC00ZDg0LWIxOTUtN2JiZGYxNjc0NDg2XC9kZTljemxyLTdhOWVmNjk5LWIzMDQtNDhjZC05MDFmLTI0ODRmZjIyY2Q5MS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.n3UlZIaKiV5muYLD01MawoRIH1EJBLuUk99v7RsKcbY");
+			background-size: 100%;
+			background-repeat: no-repeat;
 		}
 	</style>
 	<!-- 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
@@ -46,14 +49,20 @@
 			var boardWidth = board.width();	// the maximum X-Coordinate of the screen
 
 			// Every 50 milliseconds, call the update Function (see below)
-			setInterval(update, 50);
+			//var interval = 
+			setInterval(update, 50)
+			//function endGame(){
+			//	clearInterval(interval)
+			//}
 
 			// Every time the box is clicked, call the handleBoxClick Function (see below)
 			box.on('click', handleBoxClick);
+			//board.on('click', endGame)
 
 			// moves the Box to a new position on the screen along the X-Axis
-			function moveBoxTo(newPositionX) {
+			function moveBoxTo(newPositionX, newPositionY) {
 				box.css("left", newPositionX);
+				box.css("top", newPositionY);
 			}
 
 			// changes the text displayed on the Box
@@ -69,6 +78,11 @@
 			var positionX = 0;
 			var points = 0;
 			var speed = 10;
+			var positionY = 0;
+			var speedY = 10;
+			var boardHeight = jQuery(window).height();
+			//var boardClick = board.on('click', handleBoxClick);
+		
 			/* 
 			This Function will be called 20 times/second. Each time it is called,
 			it should move the Box to a new location. If the box drifts off the screen
@@ -76,8 +90,21 @@
 			*/
 			function update() {
 		/* Your Code to Increase positionX by 10 HERE */
+			if (positionX > boardWidth) {
+				speed = -speed;
+			}
+			if (positionX < 0) {
+				speed = -speed;
+			}
+			if (positionY > boardHeight) {
+				speedY = -speedY;
+			}
+			if (positionY < 0) {
+				speedY = -speedY;
+			}
 			positionX = positionX + speed;
-			moveBoxTo(positionX);
+			positionY = positionY + speedY;
+			moveBoxTo(positionX, positionY);
 			
 			};
 
@@ -89,8 +116,20 @@
 			function handleBoxClick() {
 				positionX = 0;
 				// your code to increase the points variable by 1
-				points = points +1
+				points = points +1;
 				changeBoxText(points);
+				if(speed > 0){
+				speed = speed + 3;
+				}
+				else if(speed < 0){
+				speed = speed -3;
+				}
+				if(speedY> 0){
+				speedY = speedY + 3;
+				}
+				else if(speedY < 0){
+				speedY = speedY-3;
+				}
 			};
 
 
